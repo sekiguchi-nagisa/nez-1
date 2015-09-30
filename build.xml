@@ -52,6 +52,16 @@
 			<zipfileset src="${asm_jar}" />
 		</jar>
 	</target>
+	
+	<!-- ========================================= -->
+	<!--          generate nez core module         -->
+	<!-- ========================================= -->
+	<target name="nez-core" depends="build">
+		<jar jarfile="nez-core.jar">
+			<fileset dir="${build_dir}" includes="**/*.class" excludes="**/*Test.class"/>
+		</jar>
+	</target>
+	
 
 	<!-- ================================== -->
 	<!-- CLEAN -->
@@ -59,7 +69,8 @@
 	<target name="clean">
 		<delete dir="${build_dir}" />
 		<delete file="${BinaryName}.jar" />
-		<delete dir="${build_test_dir}" />
+		<delete file="nez-core.jar" />
+		<delete dir="${build_test_dir}"/>
 	</target>
 
 	<!-- ================================== -->
